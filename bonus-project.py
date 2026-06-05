@@ -28,6 +28,11 @@ if __name__ == "__main__":
     try:
         user_input = input("Insert time to count down (h:m:s) ")
         hours, minutes, seconds = map(int, user_input.split(":"))
-        start_timer(hours, minutes, seconds)
+        while hours <= 0 and minutes <= 0 and seconds <= 0:
+            print("Invalid input! Time cannot be negative.")
+            user_input = input("Insert time to count down (h:m:s) ")
+            hours, minutes, seconds = map(int, user_input.split(":"))
+        else:
+            start_timer(hours, minutes, seconds)
     except ValueError:
         print("Invalid input! Please enter a whole number of seconds.")
